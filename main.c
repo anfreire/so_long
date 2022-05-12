@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:43:30 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/12 12:52:11 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:34:24 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int ac, char *av[])
 	t_param		param;
 	int			len;
 	const char	*ber;
-	const char	ber_orig[4] = ".ber";
+	const char	ber_orig[5] = ".ber";
 
 	if (ac != 2)
 	{
@@ -56,7 +56,7 @@ int	main(int ac, char *av[])
 	}
 	len = (int)ft_strlen(av[1]);
 	ber = &(av[1])[len - 4];
-	if (ft_strncmp(ber, ber_orig, 4))
+	if (ft_strncmp(ber, ber_orig, 5))
 	{
 		ft_printf("%s\nMap file extension not supported!", DEFAULT_ERROR);
 		return (0);
@@ -64,6 +64,8 @@ int	main(int ac, char *av[])
 	fd = open(av[1], O_RDONLY);
 	param.matrix = heigh_calc(fd, &param);
 	start_mlx_process(&param);
+	close(fd);
+	free_all(&param);
 	return (0);
 }
 
