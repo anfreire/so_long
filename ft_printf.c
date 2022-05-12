@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:50:09 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/12 13:33:11 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:38:15 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,4 @@ void	free_all(t_param *param)
 	free(param->img.player_f);
 	free(param->img.chest);
 	free(param->img.exit);
-	
 }
