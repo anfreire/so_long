@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 21:23:50 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/12 11:56:19 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/12 12:23:34 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 int	key_press(int keycode, t_param *param)
 {
 	static int	a = 0;
+	static int	exits = 0;
 
-	if (!exit_true(param))
+	if (a == 0)
+		exits = exit_true(param);
+	if (exit_true(param) != exits)
 		if (keycode > -1)
 			exit (0);
 	if (keycode == KEY_W)

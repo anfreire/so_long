@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:43:36 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/12 11:46:23 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/12 12:51:33 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 # include <fcntl.h>
 # define DEFAULT_ERROR "Error"
 # define NFOUND "File not found."
-# define MCV2 "Invalid Components! (Missing Exit or Chests or Player)"
+# define MCV2 "Invalid Components! (The characters '1', '0', 'P', and 'E' \
+make up the map.)"
 # define MCV3 "Map data is corrupted, and there is an empty new line between the \
 map data."
 # define MCV4 "The map is distorted, it is not a rectangular map."
@@ -74,6 +75,7 @@ typedef struct s_param
 
 }				t_param;
 
+int		close_win(t_param *param);
 char	*get_next_line(int fd);
 int		exit_true(t_param	*param);
 int		key_press(int keycode, t_param *param);
@@ -109,4 +111,6 @@ void	ft_put_hex(unsigned long long num, const char format);
 int		ft_print_hex(unsigned int num, const char format);
 char	*only_one_player(char	*str);
 int		chests_true(t_param *param);
+void	start_mlx_process(t_param *param);
+
 #endif

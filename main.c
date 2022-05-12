@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:43:30 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/12 11:56:49 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/12 12:52:11 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ int	exit_true(t_param	*param)
 	int	j;
 	int	b00l;
 
-	i = 0;
 	b00l = 0;
+	i = 0;
 	while (param->matrix[i])
 	{
 		j = 0;
 		while (param->matrix[i][j])
 		{
 			if (param->matrix[i][j] == 'E')
-				b00l = 1;
-				j++;
+				b00l++;
+			j++;
 		}
 		i++;
 	}
@@ -45,23 +45,25 @@ int	main(int ac, char *av[])
 {
 	int			fd;
 	t_param		param;
+	int			len;
+	const char	*ber;
+	const char	ber_orig[4] = ".ber";
 
-	if (ac < 1)
+	if (ac != 2)
 	{
 		ft_printf("%s\nYou didn't enter any map!", DEFAULT_ERROR);
 		return (0);
 	}
+	len = (int)ft_strlen(av[1]);
+	ber = &(av[1])[len - 4];
+	if (ft_strncmp(ber, ber_orig, 4))
+	{
+		ft_printf("%s\nMap file extension not supported!", DEFAULT_ERROR);
+		return (0);
+	}
 	fd = open(av[1], O_RDONLY);
 	param.matrix = heigh_calc(fd, &param);
-	get_init(&param);
-	param.mlx.mlx = mlx_init();
-	param.mlx.win = mlx_new_window(param.mlx.mlx, (param.mlx.lenght * 64),
-			(param.mlx.height * 64), "mlx_project");
-	put_img_mlx(&param);
-	setting_img(&param, (-1), (-1));
-	mlx_hook(param.mlx.win, 17, 0, close_win, &param);
-	mlx_hook(param.mlx.win, X_EVENT_KEY_RELEASE, 0, &key_press, &param);
-	mlx_loop(param.mlx.mlx);
+	start_mlx_process(&param);
 	return (0);
 }
 

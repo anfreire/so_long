@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/02 16:57:58 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/11 14:12:28 by anfreire         ###   ########.fr       */
+/*   Created: 2022/05/12 12:50:09 by anfreire          #+#    #+#             */
+/*   Updated: 2022/05/12 12:51:10 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,17 @@ static int	ft_aux_printf(const char *fmt, va_list args, int i)
 	else if (*fmt == '%')
 		i += ft_putchar('%');
 	return (i);
+}
+
+void	start_mlx_process(t_param *param)
+{
+	get_init(param);
+	param->mlx.mlx = mlx_init();
+	param->mlx.win = mlx_new_window(param->mlx.mlx, (param->mlx.lenght * 64),
+			(param->mlx.height * 64), "mlx_project");
+	put_img_mlx(param);
+	setting_img(param, (-1), (-1));
+	mlx_hook(param->mlx.win, 17, 0, close_win, param);
+	mlx_hook(param->mlx.win, X_EVENT_KEY_RELEASE, 0, &key_press, param);
+	mlx_loop(param->mlx.mlx);
 }
