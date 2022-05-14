@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:43:36 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/12 13:36:35 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/12 17:20:14 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ char	*only_one_player(char	*str);
 int		chests_true(t_param *param);
 void	start_mlx_process(t_param *param);
 void	free_all(t_param *param);
+void	free_images(t_param *param);
 
 #endif

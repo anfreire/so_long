@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:43:30 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/12 13:34:24 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/12 18:26:08 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	main(int ac, char *av[])
 	param.matrix = heigh_calc(fd, &param);
 	start_mlx_process(&param);
 	close(fd);
+	free_images(&param);
 	free_all(&param);
 	return (0);
 }

@@ -6,13 +6,30 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:50:09 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/12 13:38:15 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:28:50 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static int	ft_aux_printf(const char *fmt, va_list args, int i);
+static int	ft_aux_printf(const char *fmt, va_list args, int i)
+{
+	if (*fmt == 'c')
+		i += ft_putchar(va_arg(args, int));
+	else if (*fmt == 's')
+		i += ft_putstr(va_arg(args, char *));
+	else if (*fmt == 'p')
+		i += ft_print_ptr(va_arg(args, unsigned long long));
+	else if (*fmt == 'd' || *fmt == 'i')
+		i += ft_putnbr(va_arg(args, int));
+	else if (*fmt == 'u')
+		i += ft_print_unsigned_hex(va_arg(args, unsigned int), 0);
+	else if (*fmt == 'x' || *fmt == 'X')
+		i += ft_print_unsigned_hex(va_arg(args, unsigned int), *fmt);
+	else if (*fmt == '%')
+		i += ft_putchar('%');
+	return (i);
+}
 
 int	ft_printf(const char *fmt, ...)
 {	
@@ -36,25 +53,6 @@ int	ft_printf(const char *fmt, ...)
 	return (i);
 }
 
-static int	ft_aux_printf(const char *fmt, va_list args, int i)
-{
-	if (*fmt == 'c')
-		i += ft_putchar(va_arg(args, int));
-	else if (*fmt == 's')
-		i += ft_putstr(va_arg(args, char *));
-	else if (*fmt == 'p')
-		i += ft_print_ptr(va_arg(args, unsigned long long));
-	else if (*fmt == 'd' || *fmt == 'i')
-		i += ft_putnbr(va_arg(args, int));
-	else if (*fmt == 'u')
-		i += ft_print_unsigned_hex(va_arg(args, unsigned int), 0);
-	else if (*fmt == 'x' || *fmt == 'X')
-		i += ft_print_unsigned_hex(va_arg(args, unsigned int), *fmt);
-	else if (*fmt == '%')
-		i += ft_putchar('%');
-	return (i);
-}
-
 void	start_mlx_process(t_param *param)
 {
 	get_init(param);
@@ -64,7 +62,7 @@ void	start_mlx_process(t_param *param)
 	put_img_mlx(param);
 	setting_img(param, (-1), (-1));
 	mlx_hook(param->mlx.win, 17, 0, close_win, param);
-	mlx_hook(param->mlx.win, X_EVENT_KEY_RELEASE, 0, &key_press, param);
+	mlx_hook(param->mlx.win, 2, 0, &key_press, param);
 	mlx_loop(param->mlx.mlx);
 }
 
@@ -78,4 +76,13 @@ void	free_all(t_param *param)
 	free(param->img.player_f);
 	free(param->img.chest);
 	free(param->img.exit);
+}
+
+void	free_images(t_param *param)
+{
+	mlx_destroy_image(param->mlx.mlx, param->img.wall);
+	mlx_destroy_image(param->mlx.mlx, param->img.chest);
+	mlx_destroy_image(param->mlx.mlx, param->img.caminho);
+	mlx_destroy_image(param->mlx.mlx, param->img.player_f);
+	mlx_destroy_image(param->mlx.mlx, param->img.exit);
 }
