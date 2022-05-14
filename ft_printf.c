@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:50:09 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/14 13:28:50 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:39:51 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,6 @@ void	start_mlx_process(t_param *param)
 	mlx_hook(param->mlx.win, 17, 0, close_win, param);
 	mlx_hook(param->mlx.win, 2, 0, &key_press, param);
 	mlx_loop(param->mlx.mlx);
-}
-
-void	free_all(t_param *param)
-{
-	free(param->matrix);
-	free(param->mlx.mlx);
-	free(param->mlx.win);
-	free(param->img.caminho);
-	free(param->img.wall);
-	free(param->img.player_f);
-	free(param->img.chest);
-	free(param->img.exit);
 }
 
 void	free_images(t_param *param)

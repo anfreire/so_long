@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:43:30 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/12 18:26:08 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:54:20 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 int	close_win(t_param *param)
 {
 	mlx_destroy_window(param->mlx.mlx, param->mlx.win);
+	free_images(param);
+	free(param->matrix);
+	free(param->mlx.mlx);
 	exit (0);
 	return (0);
 }
@@ -51,7 +54,8 @@ int	main(int ac, char *av[])
 
 	if (ac != 2)
 	{
-		ft_printf("%s\nYou didn't enter any map!", DEFAULT_ERROR);
+		ft_printf("%s\nYou didn't insert any maps or inserted more than \
+one!", DEFAULT_ERROR);
 		return (0);
 	}
 	len = (int)ft_strlen(av[1]);
@@ -65,8 +69,6 @@ int	main(int ac, char *av[])
 	param.matrix = heigh_calc(fd, &param);
 	start_mlx_process(&param);
 	close(fd);
-	free_images(&param);
-	free_all(&param);
 	return (0);
 }
 

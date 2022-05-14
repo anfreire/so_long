@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 21:23:50 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/14 13:25:32 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:36:49 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	key_press(int keycode, t_param *param)
 		exits = exit_true(param);
 	if (exit_true(param) != exits)
 		if (keycode > -1)
-			exit (0);
+			close_win(param);
 	if (keycode == KEY_W)
 		a += move_up(param);
 	else if (keycode == KEY_S)
@@ -31,7 +31,7 @@ int	key_press(int keycode, t_param *param)
 	else if (keycode == KEY_D)
 		a += move_right(param);
 	else if (keycode == KEY_ESC)
-		exit(0);
+		close_win(param);
 	if (keycode == KEY_W || keycode == KEY_S
 		|| keycode == KEY_A || keycode == KEY_D)
 		ft_printf("Steps taken to reach the exit: %d\n\n", a);

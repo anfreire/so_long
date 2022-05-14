@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:43:36 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/12 17:20:14 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:44:47 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ typedef struct s_img
 	void	*caminho;
 	void	*chest;
 	void	*exit;
-	void	*player_b;
-	void	*player_l;
-	void	*player_r;
 	void	*player_f;
 	void	*wall;
 }				t_img;
@@ -112,7 +109,6 @@ int		ft_print_hex(unsigned int num, const char format);
 char	*only_one_player(char	*str);
 int		chests_true(t_param *param);
 void	start_mlx_process(t_param *param);
-void	free_all(t_param *param);
 void	free_images(t_param *param);
 
 #endif
