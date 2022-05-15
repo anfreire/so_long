@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:43:30 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/11 12:57:57 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:14:40 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	**heigh_calc(int fd, t_param *param)
 	matrix = map_reciever(fd);
 	param->mlx.lenght = (int)ft_strlen(*matrix);
 	param->mlx.height = matrix_heigh(matrix);
+	close(fd);
 	return (matrix);
 }
 

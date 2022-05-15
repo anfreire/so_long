@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 21:42:30 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/14 13:30:10 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:10:44 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*map_checker_v1(int fd)
 	char	*tmp;
 	char	*dst;
 
+	dst = NULL;
 	tmp = NULL;
+	buff = NULL;
 	buff = get_next_line(fd);
 	while (buff != 0)
 	{
@@ -32,8 +34,7 @@ char	*map_checker_v1(int fd)
 		buff = get_next_line(fd);
 	}
 	free(buff);
-	tmp = ft_strtrim(tmp, "\n");
-	buff = tmp;
+	buff = ft_strtrim(tmp, "\n");
 	free(tmp);
 	return (buff);
 }

@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 20:43:30 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/14 13:54:20 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:17:57 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 int	close_win(t_param *param)
 {
+	int	i;
+
+	i = 0;
 	mlx_destroy_window(param->mlx.mlx, param->mlx.win);
 	free_images(param);
+	while (i < matrix_heigh(param->matrix))
+	{
+		free(param->matrix[i]);
+		i++;
+	}
 	free(param->matrix);
-	free(param->mlx.mlx);
+	system("leaks -- so_long");
 	exit (0);
 	return (0);
 }
@@ -54,8 +62,7 @@ int	main(int ac, char *av[])
 
 	if (ac != 2)
 	{
-		ft_printf("%s\nYou didn't insert any maps or inserted more than \
-one!", DEFAULT_ERROR);
+		ft_printf("%s\nYou didn't enter any map!", DEFAULT_ERROR);
 		return (0);
 	}
 	len = (int)ft_strlen(av[1]);
@@ -68,7 +75,6 @@ one!", DEFAULT_ERROR);
 	fd = open(av[1], O_RDONLY);
 	param.matrix = heigh_calc(fd, &param);
 	start_mlx_process(&param);
-	close(fd);
 	return (0);
 }
 

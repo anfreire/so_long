@@ -6,7 +6,7 @@
 /*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 16:33:07 by anfreire          #+#    #+#             */
-/*   Updated: 2022/05/11 11:18:26 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/15 19:20:32 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	**map_reciever(int fd)
 		exit (1);
 	}
 	matrix = map_checker_v3(str);
+	free(str);
 	if (matrix == NULL)
 	{
 		ft_printf ("%s\n%s%s", DEFAULT_ERROR, MCV3, MORE);

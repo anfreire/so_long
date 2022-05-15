@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anfreire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anfreire <anfreire@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:41:45 by anfreire          #+#    #+#             */
-/*   Updated: 2022/02/14 17:52:25 by anfreire         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:24:26 by anfreire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,3 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
-
-/*int main()
-{
-    char str[] = "+-123teste58";
-    bzero(str, 5);
-	//ft_bzero(str, 5);
-    printf("%s" , str);
-    return 0;
-}*/
